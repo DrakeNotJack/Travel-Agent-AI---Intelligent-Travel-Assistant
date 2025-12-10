@@ -1,33 +1,70 @@
-# Travel Agent AI - Intelligent Travel Assistant
+# **Travel Agent AI — Intelligent Travel Assistant**
 
-## I. Core Project Value
-This project is a lightweight intelligent travel assistant demo, focusing on showcasing the workflow of AI agents based on the Thought-Action-Observation (TAO) paradigm. Through iterative cycles of this paradigm, the agent achieves four key capabilities, transforming vague user intentions into actionable solutions:
+## **1. Project Core Value**
 
-- **Task Decomposition**: Breaks down the composite request of "querying weather and recommending attractions" into progressive steps: "obtain weather data → match suitable attractions → integrate results";
-- **Tool Calling**: Precisely invokes weather query (wttr.in) and attraction search (Tavily) tools to acquire real-time external data;
-- **Context Awareness**: Remembers previous results (e.g., weather data) through historical records to support subsequent decision-making;
-- **Result Synthesis**: Integrates multi-source tool outputs into natural and practical user responses.
+This project is a lightweight demonstration of an intelligent travel assistant built upon the **Thought-Action-Observation (TAO)** paradigm. Through iterative cycles of reasoning, tool execution, and observation, the agent transforms vague user intentions into actionable travel solutions.  
+Future upgrades will enable proactive collaboration and decision-making, evolving the system into a true travel partner.
 
-## II. Future Upgrade Direction: From "Execution Assistant" to "Autonomous Collaborator"
-The current version of the agent focuses on "step-by-step execution". In the future, it is planned to upgrade into an AI agent with autonomous collaboration capabilities, realizing the leap from "passive execution" to "proactive delivery".
+The agent currently demonstrates four foundational capabilities:
 
-### 1. Core Positioning Upgrade
-Instead of "guiding every step by hand", high-level goals such as "planning a weekend trip to Beijing" or "customizing a 5-day Singapore travel itinerary" will be directly entrusted to the agent. At this point, the AI will act as an independent project member, proactively advancing the task from start to finish until delivering the final results.
+- **Task Decomposition**: Breaks down compound requests (e.g., “check weather + recommend attractions”) into sequential steps: *get weather → match attractions → synthesize answer*.
+- **Tool Invocation**: Uses external tools such as **wttr.in** (weather) and **Tavily** (attraction search) to retrieve real-time data.
+- **Context Awareness**: Maintains intermediate results (e.g., weather conditions) for downstream decisions.
+- **Result Synthesis**: Merges multi-source outputs into concise and practical responses.
 
-### 2. Key Capability Evolution
+---
 
-| Capability Dimension       | Current Version (Execution Assistant)                                  | Future Version (Autonomous Collaborator)                                                                 |
-|----------------------------|-------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| Goal Reception             | Relies on clear, segmented requirements (e.g., "query weather + recommend attractions") | Supports vague high-level goals (e.g., "plan a family trip to Singapore")                                 |
-| Task Planning              | Fixed two-step process (query weather → recommend attractions)          | Dynamically generates plans (e.g., "confirm travel dates → query multi-day weather → recommend attractions by scenario → check transportation & accommodation → integrate itinerary") |
-| Tool Calling               | Invokes preset tools with explicit parameters required                  | Independently expands tools (e.g., flight API, hotel API) and automatically complements parameters        |
-| Reflection & Optimization  | No proactive reflection, only executes according to the process         | Independently verifies results (e.g., "check if attractions are open") and optimizes plans iteratively (e.g., "replace with indoor attractions on rainy days") |
-| Result Delivery            | Concise response (weather + attraction recommendations)                 | Structured deliverables (e.g., complete travel plan with itinerary, transportation guide, and notes)      |
+## **2. Future Evolution: From Execution Assistant to Autonomous Collaborator**
 
-### 3. Technical Implementation Path
-- **Enhanced Prompt Engineering**: Introduce closed-loop instructions for "goal decomposition → planning → execution → reflection" to constrain the agent's autonomous decision-making logic;
-- **Tool Ecosystem Expansion**: Integrate multiple APIs (e.g., flight, hotel, attraction opening information) to build a travel scenario tool library;
-- **New Reflection Module**: Add a "result verification" step in the loop to enable the agent to compare goals with outputs and correct deviations proactively;
-- **Structured Output Design**: Define travel plan templates (Markdown table/JSON) to ensure standardized deliverables.
+The current version focuses on step-by-step execution.  
+Future iterations aim to build an **Autonomous Travel Collaborator** capable of proactive planning, end-to-end task execution, transactional operations, and feedback-driven optimization.  
+This represents a shift from *“acting on instructions”* to *“delivering complete travel outcomes with user-supervised checkpoints.”*
 
-💡 The current demo is a "Minimum Viable Demonstration" of AI agents. The future upgrade to "Autonomous Collaborator" will further unleash the value of AI in complex scenarios, achieving a core leap from "tool calling" to "goal delivery".
+### **2.1 Upgraded Positioning**
+
+Users will no longer need to guide each step manually. High-level goals—such as *“plan a weekend trip to Beijing”* or *“create a 5-day Singapore itinerary”*—can be directly delegated to the agent.
+
+The agent will autonomously handle the full workflow:
+
+> **Goal Understanding → Requirement Breakdown → Information Retrieval → Booking (Flights/Hotels) → Optimization → Final Delivery**
+
+At critical financial or itinerary-impacting steps (e.g., flight booking, hotel confirmation), the agent will request explicit user approval.  
+User feedback will also be incorporated to continuously refine future recommendations.
+
+---
+
+### **2.2 Capability Evolution**
+
+| Capability Dimension | Current Version (Execution Assistant) | Future Version (Autonomous Collaborator) |
+|---------------------|---------------------------------------|-------------------------------------------|
+| **Goal Understanding** | Requires precise instructions (e.g., “weather + attractions”) | Accepts vague or high-level goals (e.g., “plan a family trip”) |
+| **Task Planning** | Fixed two-step workflow | Dynamic plans (e.g., define dates → multi-day weather → attraction planning → transportation/hotel selection) |
+| **Tool Usage** | Predefined tools with manual parameters | Expanded APIs (flight/hotel), automatic parameter completion |
+| **Self-Reflection** | Executes without validation | Verifies constraints (e.g., opening hours), adapts plans (e.g., indoor options on rainy days) |
+| **Output Format** | Simple text replies | Structured deliverables (full itinerary, transportation guides, notes) |
+
+---
+
+### **2.3 Technical Roadmap**
+
+1. **Enhanced Interactive Prompting**  
+   Introduce a closed-loop workflow:  
+   *Requirement Breakdown → Planning → Execution → Critical Confirmation → Feedback → Iteration*.
+
+2. **Transactional Tool Integration**  
+   Add APIs for flight booking (e.g., Fliggy), hotel booking (e.g., Ctrip), and build a full booking pipeline:  
+   *search → filter → confirm → reserve → manage orders*.
+
+3. **Decision Confirmation & Feedback Module**  
+   - Mandatory confirmation for booking/payment-related operations  
+   - Lightweight feedback UI (ratings + tags) for structured data collection  
+
+4. **User Preference Modeling**  
+   Learn from historical preferences (hotel types, preferred flight times) to improve recommendation quality.
+
+5. **Security & Compliance**  
+   - Encrypted storage for sensitive data  
+   - Clear responsibility boundaries for booking steps  
+   - Ensures safety and regulatory compliance  
+
+💡 This implementation serves as a Minimum Viable Demonstration. Future iterations will extend the agent from basic information retrieval to an Autonomous Collaborator capable of completing end-to-end travel tasks. By integrating transactional APIs, mandatory confirmation checkpoints, and a feedback-learning loop, the system will deliver reliable, user-controlled travel planning.
