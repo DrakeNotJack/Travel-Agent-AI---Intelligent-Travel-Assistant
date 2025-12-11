@@ -1,4 +1,4 @@
-# **Travel Agent AI — Intelligent Travel Assistant**
+# **AI Travel Agent — Intelligent Travel Assistant**
 
 ## **1. Project Core Value**
 
